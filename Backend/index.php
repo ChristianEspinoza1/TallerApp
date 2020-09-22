@@ -3,19 +3,13 @@
 header("Access-Control-Allow-Origin: *");//Permite hacer peticiones desde cualquier origen
 header("Content-Type: application/json");//Decirle que será un json
 
-function getData($var){
-    $array = [
-       $var,    
-    ];
-    return json_encode($array);
-}
+//Conexion base de datos
+include_once 'db.php';
 
-//validar post 
-if($_SERVER['REQUEST_METHOD'] ==='POST'){
-    echo getData($var = 'post');
-}
+//Llamar funciones
+require_once "users.php";
 
-//validar get
+//Obtener usuarios
 if($_SERVER['REQUEST_METHOD'] ==='GET'){
-    echo getData($var = 'get');
+    echo getUser($conn);
 }
